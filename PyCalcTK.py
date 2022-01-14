@@ -59,7 +59,7 @@ def sub():
         label5 = tk.Label(root, text= float(v1)-float(v2),font=('monospace', 12),bg='#c3c3c3')
         canvas1.create_window(210, 300, window=label5)
 
-buttonSub = tk.Button(text='–', command=sub, bg='blue' , fg='white', font=('monospace', 12, 'bold'), width = 4)
+buttonSub = tk.Button(text='-', command=sub, bg='blue' , fg='white', font=('monospace', 12, 'bold'), width = 4)
 canvas1.create_window(150, 190, window=buttonSub)
 
 def mul():
@@ -90,18 +90,22 @@ canvas1.create_window(280, 190, window=buttonDiv)
 
 def sqrt_f():
     v1 = entry1.get()
-
-    label8 = tk.Label(root , text = math.sqrt(float(v1)),font = ('monospace' , 10, 'bold' ), bg = '#c3c3c3')
-    canvas1.create_window(210 , 300, window=label8)
+    if v1 == '':
+        messagebox.askretrycancel('Try Again?' , 'Please enter an input on the first entry box')
+    else:     
+        label8 = tk.Label(root , text = math.sqrt(float(v1)),font = ('monospace' , 10, 'bold' ), )
+        canvas1.create_window(210 , 300, window=label8)
 
 buttonSqrt = tk.Button(text='sqrt', command=sqrt_f , bg='blue', fg='white', font=('monospace' , 10 , 'bold'), width = 3)
 canvas1.create_window(150 , 220 , window=buttonSqrt)
 
 def cbrt_f():
     v1 = entry1.get()
-
-    label9 = tk.Label(root , text=float(v1)**(1./3),font = ('monospace' , 10, 'bold' ), bg = '#c3c3c3')
-    canvas1.create_window(210 , 300, window=label9)
+    if v1 == '':
+        messagebox.askretrycancel('Try Again?' , 'Please enter an input on the first entry box')
+    else:    
+        label9 = tk.Label(root , text=float(v1)**(1./3),font = ('monospace' , 10, 'bold' ), )
+        canvas1.create_window(210 , 300, window=label9)
 
 buttonCbrt = tk.Button(text='cbrt', command=cbrt_f , bg='blue', fg='white', font=('monospace' , 10 , 'bold'), width = 3)
 canvas1.create_window(200 , 220 , window=buttonCbrt)
@@ -112,7 +116,7 @@ def pwr_f():
     if v1 == '' or v2 == '':
         messagebox.askretrycancel('Try Again?' , 'Please enter an input on both the entry boxes')
     else:        
-        label10 = tk.Label(root , text=float(v1)**float(v2),font=('monospace' , 10, 'bold' ), bg = '#c3c3c3')
+        label10 = tk.Label(root , text=float(v1)**float(v2),font=('monospace' , 10, 'bold' ), )
         canvas1.create_window(210 , 300, window=label10)
 
 buttonPwr = tk.Button(root, text='pwr', command=pwr_f , bg='blue' , fg='white' , font=('monospace' , 10 , 'bold'), width = 3)
@@ -120,33 +124,39 @@ canvas1.create_window(250 , 220, window=buttonPwr)
 
 def sin_f():
     v1 = entry1.get()
-
-    label11 = tk.Label(root , text=math.sin(float(v1)) , font=('monospace' , 12))
-    canvas1.create_window(210 , 300, window=label11)
+    if v1 == '':
+        messagebox.askretrycancel('Try Again?' , 'Please enter an input on the first entry box')
+    else:    
+        label11 = tk.Label(root , text=math.sin(float(v1)) , font=('monospace' , 12))
+        canvas1.create_window(210 , 300, window=label11)
 
 ButtonSin = tk.Button(root , text='sin' , command=sin_f , bg='blue' , fg='white' , font=('monospace' , 12) , width = 3)
 canvas1.create_window(150 , 250, window=ButtonSin)
 
 def cos_f():
     v1 = entry1.get()
-
-    label12 = tk.Label(root , text=math.cos(float(v1)) , font=('monospace' , 12))
-    canvas1.create_window(210 , 300, window=label12)
+    if v1 == '':
+        messagebox.askretrycancel('Try Again?' , 'Please enter an input on the first entry box')
+    else:    
+        label12 = tk.Label(root , text=math.cos(float(v1)) , font=('monospace' , 12))
+        canvas1.create_window(210 , 300, window=label12)
 
 ButtonCos = tk.Button(root , text='cos' , command=cos_f , bg='blue' , fg='white' , font=('monospace' , 12) , width = 3)
 canvas1.create_window(250 ,250, window=ButtonCos)
-#canvas1.create_window()
+
 def tan_f():
     v1 = entry1.get()
-
-    label13 = tk.Label(root , text=math.tan(float(v1)) , font=('monospace' , 12) , bg = '#c3c3c3')
-    canvas1.create_window(210, 300, window=label13)
+    if v1 == '':
+        messagebox.askretrycancel('Try Again' , 'Please enter an input on the first')
+    else:    
+        label13 = tk.Label(root , text=math.tan(float(v1)) , font=('monospace' , 12))
+        canvas1.create_window(210, 300, window=label13)
 
 ButtonTan = tk.Button(root , text='tan' , command=tan_f , bg='blue' , fg='white' , font=('monospace' , 12) , width = 3)
 canvas1.create_window(200 , 250, window=ButtonTan)    
 # Clear Function
 def clear_f():
-	label7 = tk.Label(root, text= "                                            " , bg = '#c3c3c3' , fg = '#c3c3c3')
+	label7 = tk.Label(root, text= "                                             ")
 	canvas1.create_window(210, 300, window = label7)
 
 buttonClean = tk.Button(root , text='Clear' , command=clear_f , bg='blue' ,fg='white' , width='5' , font=('monospace' , 12))
@@ -159,19 +169,19 @@ def helpsub_f():
 def helpmul_f():
    messagebox.showinfo('Help' , 'In the first and the second entry boxes enter any number you want and to get the answer click on the X button to get the product.')
 def helpdiv_f():
-    messagebox.showinfo('Help' , 'In the first entry enter any number(except 0) for dividend and in the second entry enter any number(except 0) for dividend and to get the quotient you have to click on the / button')
+    messagebox.showinfo('Help' , 'In the first entry enter any number(except 0) for dividend and in the second entry enter any number(except 0) for dividend and to get the quotient you have to click on the / button')    
 def about():
     messagebox.showinfo('About' , 'PyCalc Dev 1.0 https://github.com/abhx-x11/pycalctk')
-#Menu Bar    
+#Help Menu    
 menubar = Menu(root)
-helpmenu = Menu(menubar)
+helpmenu = Menu(menubar , tearoff=0)
 helpmenu.add_command(label = 'Addition Help' , command=helpadd_f)
 helpmenu.add_command(label = 'Subtraction Help' , command=helpsub_f)
 helpmenu.add_command(label = 'Multiplication Help' , command=helpmul_f)
 helpmenu.add_command(label = 'Division Help' , command=helpdiv_f)
+helpmenu.add_separator()
 helpmenu.add_command(label = 'About PyCalc TK' , command=about)
 menubar.add_cascade(label = 'Help' , menu=helpmenu)
 #Execution
 root.config(menu=menubar)
 root.mainloop()
-

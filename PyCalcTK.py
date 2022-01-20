@@ -122,6 +122,17 @@ def pwr_f():
 buttonPwr = tk.Button(root, text='pwr', command=pwr_f , bg='blue' , fg='white' , font=('monospace' , 10 , 'bold'), width = 3)
 canvas1.create_window(250 , 220, window=buttonPwr)
 
+def log_f(event):
+	v1=entry1.get()
+	v2=entry2.get()
+	if v1 == '':
+		messagebox.askretrycancel('Try Again?' , 'Please enter an input on the first entry box')
+	elif v1 == str(v1):
+		label14 = tk.Label(root , text=math.log(float(v1)) , font=('monospace' , 10, 'bold'))
+		canvas1.create_window(210, 300, window=label14)
+	else:
+		label14 = tk.Label(root , text=math.log(float(v1) , float(v2)) , font=('monospace' , 10 , 'bold'))
+		canvas1.create_window(210, 300, window=label14)
 def sin_f():
     v1 = entry1.get()
     if v1 == '':
@@ -182,6 +193,9 @@ helpmenu.add_command(label = 'Division Help' , command=helpdiv_f)
 helpmenu.add_separator()
 helpmenu.add_command(label = 'About PyCalc TK' , command=about)
 menubar.add_cascade(label = 'Help' , menu=helpmenu)
+#Keybindings
+root.bind('<Alt-l>' , log_f)
+root.bind('<Control-l>' , log_f)
 #Execution
 root.config(menu=menubar)
 root.mainloop()
